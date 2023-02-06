@@ -2,26 +2,20 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Modal from "../components/modal"
-import {userFirstName, userLastName, userDateOfBirth, userStartDate, userStreet, userCity, userState, userZipCode, userDepartment } from "../store"
+import {userArr } from "../store"
 import states from "../utils/state"
 import "../styles/main.css"
 
 export default function Accueil() {
     const dispatch = useDispatch();
+    let user = {}
     const [openModal, setOpenModal] = useState(false);
     const [values, setValues] = useState("");
 
     const handleSubmit = async e => {
         e.preventDefault();
-        dispatch(userFirstName(values.firstName))
-        dispatch(userLastName(values.lastName))
-        dispatch(userDateOfBirth(values.dateOfBirth))
-        dispatch(userStartDate(values.dateOfBirth))
-        dispatch(userStreet(values.street))
-        dispatch(userCity(values.city))
-        dispatch(userState(values.state))
-        dispatch(userZipCode(values.zipCode))
-        dispatch(userDepartment(values.department))
+        user = {userFirstName : values.firstName, userLastName: values.lastName, userDateOfBirth: values.dateOfBirth, userStartDate: values.startDate, userStreet: values.street, userCity: values.city, userState: values.state, userZipCode: values.zipCode, userDepartment: values.department}
+        dispatch(userArr(user))
       }
 
       const handleChange = (e) => {
