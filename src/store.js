@@ -11,7 +11,7 @@ const initialState = {
     state: "",
     zipCode: "",
     department: "",
-    users: []
+    isModalOpen : false,
 };
 
 //Définition des actions
@@ -144,6 +144,7 @@ function department_reducer(state = initialState, action) {
     return state;
 }
 
+
 const reducer = combineReducers({
     firstName: firstName_reducer,
     lastName: lastName_reducer,
@@ -153,7 +154,7 @@ const reducer = combineReducers({
     city: city_reducer,
     state: state_reducer,
     zipCode: zipCode_reducer,
-    department: department_reducer
+    department: department_reducer,
     });
 
 //Export du store

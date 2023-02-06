@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Modal from "../components/modal"
 import {userFirstName, userLastName, userDateOfBirth, userStartDate, userStreet, userCity, userState, userZipCode, userDepartment } from "../store"
 import states from "../utils/state"
 import "../styles/main.css"
 
 export default function Accueil() {
     const dispatch = useDispatch();
-
-    const [users, setUsers] = useState([]);
-
+    const [openModal, setOpenModal] = useState(false);
     const [values, setValues] = useState("");
 
     const handleSubmit = async e => {
@@ -42,7 +41,7 @@ export default function Accueil() {
         <Link className="employeelistRedirect" to="employeelist">View Current Employees</Link>
         <h2>Create Employee</h2>
 
-        <form action="#" onSubmit={handleSubmit} id="create-employee">
+        <form onSubmit={handleSubmit} id="create-employee">
 
             <label htmlFor="first-name">First Name</label>
             <input type="text" name='firstName' id="firstname" onChange={handleChange}/>
@@ -51,10 +50,10 @@ export default function Accueil() {
             <input type="text" name='lastName' id="lastname" onChange={handleChange}/>
 
             <label htmlFor="date-of-birth">Date of Birth</label>
-            <input type="text" name='dateOfBirth' id="dateOfBirth" onChange={handleChange}/>
+            <input type="date" name='dateOfBirth' id="dateOfBirth" onChange={handleChange}/>
 
             <label htmlFor="start-date">Start Date</label>
-            <input type="text" name='startDate' id="startDate" onChange={handleChange}/>
+            <input type="date" name='startDate' id="startDate" onChange={handleChange}/>
 
             <fieldset className="address">
                 <legend>Address</legend>
@@ -84,10 +83,11 @@ export default function Accueil() {
                 <option>Human Resources</option>
                 <option>Legal</option>
             </select>
-            <button type="submit">Save</button>
+            <button type="submit" onClick={() => setOpenModal(true)}>Save</button>
+           
         </form>
+        {openModal && <Modal closeModal={setOpenModal}/>}
     </div>
-    <div id="confirmation" className="modal">Employee Created!</div>
 </div>
   );
 }
