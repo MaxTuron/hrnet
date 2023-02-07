@@ -15,7 +15,14 @@ export default function Accueil() {
     const handleSubmit = async e => {
         e.preventDefault();
         user = {userFirstName : values.firstName, userLastName: values.lastName, userDateOfBirth: values.dateOfBirth, userStartDate: values.startDate, userStreet: values.street, userCity: values.city, userState: values.state, userZipCode: values.zipCode, userDepartment: values.department}
-        dispatch(userArr(user))
+        if(user.userFirstName === undefined || user.userLastName === undefined || user.userDateOfBirth === undefined || user.userStartDate === undefined || user.userStreet === undefined || user.userCity === undefined || user.userState === undefined || user.userZipCode === undefined || user.userDepartment === undefined){
+          alert("Veuillez remplir tous les champs")
+          console.log(user)
+        }else{
+          setOpenModal(true)
+          dispatch(userArr(user))
+        }
+        
       }
 
       const handleChange = (e) => {
@@ -77,7 +84,7 @@ export default function Accueil() {
                 <option>Human Resources</option>
                 <option>Legal</option>
             </select>
-            <button type="submit" onClick={() => setOpenModal(true)}>Save</button>
+            <button type="submit">Save</button>
            
         </form>
         {openModal && <Modal closeModal={setOpenModal}/>}
