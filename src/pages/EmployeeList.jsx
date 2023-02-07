@@ -1,9 +1,50 @@
 import "../styles/main.css"
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux"
-import {useSortBy, useTable, usePagination} from "react-table"
+import {useSortBy, useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce} from "react-table"
+import {matchSorter} from 'match-sorter'
 import React from "react";
 import "../styles/table.css"
+
+// Define a default UI for filtering
+function GlobalFilter({
+  preGlobalFilteredRows,
+  globalFilter,
+  setGlobalFilter,
+}) {
+  const count = preGlobalFilteredRows.length
+  const [value, setValue] = React.useState(globalFilter)
+  const onChange = useAsyncDebounce(value => {
+    setGlobalFilter(value || undefined)
+  }, 200)
+
+  return (
+    <span>
+      Search:{' '}
+      <input
+        value={value || ""}
+        onChange={e => {
+          setValue(e.target.value);
+          onChange(e.target.value);
+        }}
+        placeholder={`${count} records...`}
+        style={{
+          fontSize: '1.1rem',
+          border: '0',
+        }}
+      />
+    </span>
+  )
+}
+
+function fuzzyTextFilterFn(rows, id, filterValue) {
+  return matchSorter(rows, filterValue, { keys: [row => row.values[id]] })
+}
+// Let the table remove the filter if the string is empty
+fuzzyTextFilterFn.autoRemove = val => !val
+
+
+
 export default function Accueil() {
   const userArr = useSelector(state => state.userArr.userArr)
   console.log(userArr)
@@ -55,24 +96,49 @@ export default function Accueil() {
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    page, // Instead of using 'rows', we'll use page,
-    // which has only the rows for the active page
-
-    // The rest of these things are super handy, too ;)
+    page,
     canPreviousPage,
     canNextPage,
     pageOptions,
     pageCount,
     gotoPage,
     nextPage,
+    state,
     previousPage,
     setPageSize,
+    visibleColumns,
+    preGlobalFilteredRows,
+    setGlobalFilter,
     state: { pageIndex, pageSize },
-  } = useTable ( { columns, data, initialState: { pageIndex: 0 }, }, useSortBy, usePagination)
+  } = useTable ( { columns, data, initialState: { pageIndex: 0 }, },useFilters, useGlobalFilter, useSortBy, usePagination )
   
   return (
     <div>
       <h1>Current Employees</h1>
+      <select
+          value={pageSize}
+          onChange={e => {
+            setPageSize(Number(e.target.value))
+          }}
+        >
+          {[10, 20, 30, 40, 50].map(pageSize => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </select>
+            <p
+              colSpan={visibleColumns.length}
+              style={{
+                textAlign: 'left',
+              }}
+            >
+              <GlobalFilter
+                preGlobalFilteredRows={preGlobalFilteredRows}
+                globalFilter={state.globalFilter}
+                setGlobalFilter={setGlobalFilter}
+              />
+            </p>
       <table {...getTableProps()}>
       <thead>
           {headerGroups.map(headerGroup => (
@@ -146,18 +212,7 @@ export default function Accueil() {
             style={{ width: '100px' }}
           />
         </span>{' '}
-        <select
-          value={pageSize}
-          onChange={e => {
-            setPageSize(Number(e.target.value))
-          }}
-        >
-          {[10, 20, 30, 40, 50].map(pageSize => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
+
       </div>
 <Link className="indexRedirect" to="/">Home</Link>
     </div>
