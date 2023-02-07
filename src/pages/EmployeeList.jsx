@@ -1,8 +1,9 @@
 import "../styles/main.css"
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux"
-import {useTable} from "react-table"
+import {useSortBy, useTable} from "react-table"
 import React from "react";
+import "../styles/table.css"
 export default function Accueil() {
   const userArr = useSelector(state => state.userArr.userArr)
   console.log(userArr)
@@ -49,58 +50,60 @@ export default function Accueil() {
     ],[]
   )
 
-  const tableInstance = useTable({ columns, data })
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     rows,
     prepareRow,
-  } = tableInstance
-
+  } = useTable ( { columns, data, }, useSortBy)
+  const firstPageRows = rows.slice(0, 20)
+  
   return (
     <div>
-<table {...getTableProps()}>
-  <thead>
-    {// Loop over the header rows
-    headerGroups.map(headerGroup => (
-      // Apply the header row props
-      <tr {...headerGroup.getHeaderGroupProps()}>
-        {// Loop over the headers in each row
-        headerGroup.headers.map(column => (
-          // Apply the header cell props
-          <th {...column.getHeaderProps()}>
-            {// Render the header
-            column.render('Header')}
-          </th>
-        ))}
-      </tr>
-    ))}
-  </thead>
-  {/* Apply the table body props */}
-  <tbody {...getTableBodyProps()}>
-    {// Loop over the table rows
-    rows.map(row => {
-      // Prepare the row for display
-      prepareRow(row)
-      return (
-        // Apply the row props
-        <tr {...row.getRowProps()}>
-          {// Loop over the rows cells
-          row.cells.map(cell => {
-            // Apply the cell props
-            return (
-              <td {...cell.getCellProps()}>
-                {// Render the cell contents
-                cell.render('Cell')}
-              </td>
-            )
-          })}
-        </tr>
-      )
-    })}
-  </tbody>
-</table>
+      <h1>Current Employees</h1>
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map(headerGroup => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                // Add the sorting props to control sorting. For this example
+                // we can add them into the header props
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render('Header')}
+                  {/* Add a sort direction indicator */}
+                  <span>
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? ' 🔽'
+                        : ' 🔼'
+                      : ''}
+                  </span>
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {firstPageRows.map(
+            (row, i) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map(cell => {
+                    return (
+                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    )
+                  })}
+                </tr>
+              )}
+          )}
+        </tbody>
+      </table>
+      <br />
+      <div>Showing the first 20 results of {rows.length} rows</div>
+    
+<Link className="indexRedirect" to="/">Home</Link>
     </div>
   );
 }
