@@ -1,7 +1,7 @@
 import "../styles/main.css"
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux"
 import {useSortBy, useTable, usePagination, useFilters, useGlobalFilter} from "react-table"
+import Header from "../components/header"
 import React from "react";
 import "../styles/table.css"
 import GlobalFilter from "../components/globalFilter"
@@ -75,7 +75,7 @@ export default function Accueil() {
   
   return (
     <div>
-      <h1>Current Employees</h1>
+      <Header title="Home">Current employee</Header>
       <select
           value={pageSize}
           onChange={e => {
@@ -175,7 +175,6 @@ export default function Accueil() {
         </span>{' '}
 
       </div>
-<Link className="indexRedirect" to="/">Home</Link>
     </div>
   );
 }

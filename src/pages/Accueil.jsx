@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Modal from "../components/modal"
+import Header from "../components/header"
 import {userArr } from "../store"
 import {states, departements} from "../utils/state"
 import "../styles/main.css"
@@ -25,13 +25,8 @@ export default function Accueil() {
       
   return (
     <div>
-    <div className="title">
-        <h1>HRnet</h1>
-    </div>
-    <div className="container">
-        <Link className="employeelistRedirect" to="employeelist">View Current Employees</Link>
-        <h2>Create Employee</h2>
-
+      <Header title="View Current Employees">Create Employee</Header>
+      <div className="container">
         <form onSubmit={handleSubmit} id="create-employee">
 
             <label htmlFor="first-name">First Name</label>
@@ -66,7 +61,7 @@ export default function Accueil() {
             <button type="submit">Save</button>
   
         </form>
-        {openModal && <Modal closeModal={setOpenModal}><p>User succesfully created!</p></Modal>}
+        {openModal && <Modal closeModal={setOpenModal}>User succesfully created!</Modal>}
     </div>
 </div>
   );
