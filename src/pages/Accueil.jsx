@@ -3,36 +3,26 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Modal from "../components/modal"
 import {userArr } from "../store"
-import states from "../utils/state"
+import {states, departements} from "../utils/state"
 import "../styles/main.css"
+import Select from 'react-select';
 
 export default function Accueil() {
     const dispatch = useDispatch();
-    let user = {}
     const [openModal, setOpenModal] = useState(false);
-    const [values, setValues] = useState("");
-
+    const [user, setUser] = useState({ userFirstName: "", userLastName: "", userDateOfBirth: "", userStartDate: "", userStreet: "", userCity: "",  userState: "", userZipCode: "", userDepartment: "" });
+    
     const handleSubmit = async e => {
         e.preventDefault();
-        user = {userFirstName : values.firstName, userLastName: values.lastName, userDateOfBirth: values.dateOfBirth, userStartDate: values.startDate, userStreet: values.street, userCity: values.city, userState: values.state, userZipCode: values.zipCode, userDepartment: values.department}
-        if(user.userFirstName === undefined || user.userLastName === undefined || user.userDateOfBirth === undefined || user.userStartDate === undefined || user.userStreet === undefined || user.userCity === undefined || user.userState === undefined || user.userZipCode === undefined || user.userDepartment === undefined){
+          if(user.userFirstName === undefined || user.userLastName === undefined || user.userDateOfBirth === undefined || user.userStartDate === undefined || user.userStreet === undefined || user.userCity === undefined || user.userState === undefined || user.userZipCode === undefined || user.userDepartment === undefined){
           alert("Veuillez remplir tous les champs")
           console.log(user)
         }else{
           setOpenModal(true)
           dispatch(userArr(user))
         }
-        
       }
-
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setValues({
-          ...values,
-          [name]: value,
-        });
-      };
-
+      
   return (
     <div>
     <div className="title">
@@ -45,49 +35,38 @@ export default function Accueil() {
         <form onSubmit={handleSubmit} id="create-employee">
 
             <label htmlFor="first-name">First Name</label>
-            <input type="text" name='firstName' id="firstname" onChange={handleChange}/>
+            <input type="text" name='firstName' id="firstname" value={user.userFirstName} onChange={(e) => setUser(currValue => ({ ...currValue, userFirstName: e.target.value }))}/>
 
             <label htmlFor="last-name">Last Name</label>
-            <input type="text" name='lastName' id="lastname" onChange={handleChange}/>
+            <input type="text" name='lastName' id="lastname" value={user.userLastName} onChange={(e) => setUser(currValue => ({ ...currValue, userLastName: e.target.value }))}/>
 
             <label htmlFor="date-of-birth">Date of Birth</label>
-            <input type="date" name='dateOfBirth' id="dateOfBirth" onChange={handleChange}/>
+            <input type="date" name='dateOfBirth' id="dateOfBirth" value={user.userDateOfBirth} onChange={(e) => setUser(currValue => ({ ...currValue, userDateOfBirth: e.target.value }))}/>
 
             <label htmlFor="start-date">Start Date</label>
-            <input type="date" name='startDate' id="startDate" onChange={handleChange}/>
+            <input type="date" name='startDate' id="startDate" value={user.userStartDate} onChange={(e) => setUser(currValue => ({ ...currValue, userStartDate: e.target.value }))}/>
 
             <fieldset className="address">
                 <legend>Address</legend>
 
                 <label htmlFor="street">Street</label>
-                <input id="street" name='street' type="text" onChange={handleChange}/>
+                <input id="street" name='street' type="text" value={user.userStreet} onChange={(e) => setUser(currValue => ({ ...currValue, userStreet: e.target.value }))}/>
 
                 <label htmlFor="city">City</label>
-                <input id="city" name='city' type="text" onChange={handleChange}/>
+                <input id="city" name='city' type="text" value={user.userCity} onChange={(e) => setUser(currValue => ({ ...currValue, userCity: e.target.value }))}/>
 
                 <label htmlFor="state">State</label>
-                <select onChange={handleChange} id="state" name="state" type="text">
-                    {states.map(state =>
-                    <option key={state.abbreviation} value={state.abbreviation}>{state.name}, {state.abbreviation}</option>
-                    )};
-                </select>
-
+                <Select onChange={(e) => setUser(currValue => ({ ...currValue, userState: e.abbreviation }))} options={states} type="text" name='state' id="state" />
                 <label htmlFor="zip-code">Zip Code</label>
-                <input id="zipCode" name='zipCode' type="number" onChange={handleChange}/>
+                <input id="zipCode" name='zipCode' type="number" value={user.userZipCode} onChange={(e) => setUser(currValue => ({ ...currValue, userZipCode: e.target.value }))}/>
             </fieldset>
 
             <label htmlFor="department">Department</label>
-            <select onChange={handleChange} type="text" name='department' id="department">
-                <option>Sales</option>
-                <option>Marketing</option>
-                <option>Engineering</option>
-                <option>Human Resources</option>
-                <option>Legal</option>
-            </select>
+            <Select onChange={(e) => setUser(currValue => ({ ...currValue, userDepartment: e.label }))} options={departements} type="text" name='department' id="department" />
             <button type="submit">Save</button>
-           
+  
         </form>
-        {openModal && <Modal closeModal={setOpenModal}/>}
+        {openModal && <Modal closeModal={setOpenModal}><p>User succesfully created!</p></Modal>}
     </div>
 </div>
   );

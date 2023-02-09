@@ -1,49 +1,10 @@
 import "../styles/main.css"
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux"
-import {useSortBy, useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce} from "react-table"
-import {matchSorter} from 'match-sorter'
+import {useSortBy, useTable, usePagination, useFilters, useGlobalFilter} from "react-table"
 import React from "react";
 import "../styles/table.css"
-
-// Define a default UI for filtering
-function GlobalFilter({
-  preGlobalFilteredRows,
-  globalFilter,
-  setGlobalFilter,
-}) {
-  const count = preGlobalFilteredRows.length
-  const [value, setValue] = React.useState(globalFilter)
-  const onChange = useAsyncDebounce(value => {
-    setGlobalFilter(value || undefined)
-  }, 200)
-
-  return (
-    <span>
-      Search:{' '}
-      <input
-        value={value || ""}
-        onChange={e => {
-          setValue(e.target.value);
-          onChange(e.target.value);
-        }}
-        placeholder={`${count} records...`}
-        style={{
-          fontSize: '1.1rem',
-          border: '0',
-        }}
-      />
-    </span>
-  )
-}
-
-function fuzzyTextFilterFn(rows, id, filterValue) {
-  return matchSorter(rows, filterValue, { keys: [row => row.values[id]] })
-}
-// Let the table remove the filter if the string is empty
-fuzzyTextFilterFn.autoRemove = val => !val
-
-
+import GlobalFilter from "../components/globalFilter"
 
 export default function Accueil() {
   const userArr = useSelector(state => state.userArr.userArr)
@@ -54,7 +15,7 @@ export default function Accueil() {
     () => [
       {
         Header: 'First name',
-        accessor: 'userFirstName', // accessor is the "key" in the data
+        accessor: 'userFirstName',
       },
       {
         Header: 'Last name',

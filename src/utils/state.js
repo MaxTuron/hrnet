@@ -1,240 +1,305 @@
-const states = [
+export const departements = [
+    { value: 'department', label: 'Sales' },
+    { value: 'department', label: 'Marketing' },
+    { value: 'department', label: 'Engineering' },
+    { value: 'department', label: 'Human Resources' },
+    { value: 'department', label: 'Legal' },
+  ];
+  
+export const states = [
     {
-        "name": "Alabama",
+        "value": "state",
+        "label": "Alabama",
         "abbreviation": "AL"
     },
     {
-        "name": "Alaska",
+        "value": "state",
+        "label": "Alaska",
         "abbreviation": "AK"
     },
     {
-        "name": "American Samoa",
+        "value": "state",
+        "label": "American Samoa",
         "abbreviation": "AS"
     },
     {
-        "name": "Arizona",
+        "value": "state",
+        "label": "Arizona",
         "abbreviation": "AZ"
     },
     {
-        "name": "Arkansas",
+        "value": "state",
+        "label": "Arkansas",
         "abbreviation": "AR"
     },
     {
-        "name": "California",
+        "value": "state",
+        "label": "California",
         "abbreviation": "CA"
     },
     {
-        "name": "Colorado",
+        "value": "state",
+        "label": "Colorado",
         "abbreviation": "CO"
     },
     {
-        "name": "Connecticut",
+        "value": "state",
+        "label": "Connecticut",
         "abbreviation": "CT"
     },
     {
-        "name": "Delaware",
+        "value": "state",
+        "label": "Delaware",
         "abbreviation": "DE"
     },
     {
-        "name": "District Of Columbia",
+        "value": "state",
+        "label": "District Of Columbia",
         "abbreviation": "DC"
     },
     {
-        "name": "Federated States Of Micronesia",
+        "value": "state",
+        "label": "Federated States Of Micronesia",
         "abbreviation": "FM"
     },
     {
-        "name": "Florida",
+        "value": "state",
+        "label": "Florida",
         "abbreviation": "FL"
     },
     {
-        "name": "Georgia",
+        "value": "state",
+        "label": "Georgia",
         "abbreviation": "GA"
     },
     {
-        "name": "Guam",
+        "value": "state",
+        "label": "Guam",
         "abbreviation": "GU"
     },
     {
-        "name": "Hawaii",
+        "value": "state",
+        "label": "Hawaii",
         "abbreviation": "HI"
     },
     {
-        "name": "Idaho",
+        "value": "state",
+        "label": "Idaho",
         "abbreviation": "ID"
     },
     {
-        "name": "Illinois",
+        "value": "state",
+        "label": "Illinois",
         "abbreviation": "IL"
     },
     {
-        "name": "Indiana",
+        "value": "state",
+        "label": "Indiana",
         "abbreviation": "IN"
     },
     {
-        "name": "Iowa",
+        "value": "state",
+        "label": "Iowa",
         "abbreviation": "IA"
     },
     {
-        "name": "Kansas",
+        "value": "state",
+        "label": "Kansas",
         "abbreviation": "KS"
     },
     {
-        "name": "Kentucky",
+        "value": "state",
+        "label": "Kentucky",
         "abbreviation": "KY"
     },
     {
-        "name": "Louisiana",
+        "value": "state",
+        "label": "Louisiana",
         "abbreviation": "LA"
     },
     {
-        "name": "Maine",
+        "value": "state",
+        "label": "Maine",
         "abbreviation": "ME"
     },
     {
-        "name": "Marshall Islands",
+        "value": "state",
+        "label": "Marshall Islands",
         "abbreviation": "MH"
     },
     {
-        "name": "Maryland",
+        "value": "state",
+        "label": "Maryland",
         "abbreviation": "MD"
     },
     {
-        "name": "Massachusetts",
+        "value": "state",
+        "label": "Massachusetts",
         "abbreviation": "MA"
     },
     {
-        "name": "Michigan",
+        "value": "state",
+        "label": "Michigan",
         "abbreviation": "MI"
     },
     {
-        "name": "Minnesota",
+        "value": "state",
+        "label": "Minnesota",
         "abbreviation": "MN"
     },
     {
-        "name": "Mississippi",
+        "value": "state",
+        "label": "Mississippi",
         "abbreviation": "MS"
     },
     {
-        "name": "Missouri",
+        "value": "state",
+        "label": "Missouri",
         "abbreviation": "MO"
     },
     {
-        "name": "Montana",
+        "value": "state",
+        "label": "Montana",
         "abbreviation": "MT"
     },
     {
-        "name": "Nebraska",
+        "value": "state",
+        "label": "Nebraska",
         "abbreviation": "NE"
     },
     {
-        "name": "Nevada",
+        "value": "state",
+        "label": "Nevada",
         "abbreviation": "NV"
     },
     {
-        "name": "New Hampshire",
+        "value": "state",
+        "label": "New Hampshire",
         "abbreviation": "NH"
     },
     {
-        "name": "New Jersey",
+        "value": "state",
+        "label": "New Jersey",
         "abbreviation": "NJ"
     },
     {
-        "name": "New Mexico",
+        "value": "state",
+        "label": "New Mexico",
         "abbreviation": "NM"
     },
     {
-        "name": "New York",
+        "value": "state",
+        "label": "New York",
         "abbreviation": "NY"
     },
     {
-        "name": "North Carolina",
+        "value": "state",
+        "label": "North Carolina",
         "abbreviation": "NC"
     },
     {
-        "name": "North Dakota",
+        "value": "state",
+        "label": "North Dakota",
         "abbreviation": "ND"
     },
     {
-        "name": "Northern Mariana Islands",
+        "value": "state",
+        "label": "Northern Mariana Islands",
         "abbreviation": "MP"
     },
     {
-        "name": "Ohio",
+        "value": "state",
+        "label": "Ohio",
         "abbreviation": "OH"
     },
     {
-        "name": "Oklahoma",
+        "value": "state",
+        "label": "Oklahoma",
         "abbreviation": "OK"
     },
     {
-        "name": "Oregon",
+        "value": "state",
+        "label": "Oregon",
         "abbreviation": "OR"
     },
     {
-        "name": "Palau",
+        "value": "state",
+        "label": "Palau",
         "abbreviation": "PW"
     },
     {
-        "name": "Pennsylvania",
+        "value": "state",
+        "label": "Pennsylvania",
         "abbreviation": "PA"
     },
     {
-        "name": "Puerto Rico",
+        "value": "state",
+        "label": "Puerto Rico",
         "abbreviation": "PR"
     },
     {
-        "name": "Rhode Island",
+        "value": "state",
+        "label": "Rhode Island",
         "abbreviation": "RI"
     },
     {
-        "name": "South Carolina",
+        "value": "state",
+        "label": "South Carolina",
         "abbreviation": "SC"
     },
     {
-        "name": "South Dakota",
+        "value": "state",
+        "label": "South Dakota",
         "abbreviation": "SD"
     },
     {
-        "name": "Tennessee",
+        "value": "state",
+        "label": "Tennessee",
         "abbreviation": "TN"
     },
     {
-        "name": "Texas",
+        "value": "state",
+        "label": "Texas",
         "abbreviation": "TX"
     },
     {
-        "name": "Utah",
+        "value": "state",
+        "label": "Utah",
         "abbreviation": "UT"
     },
     {
-        "name": "Vermont",
+        "value": "state",
+        "label": "Vermont",
         "abbreviation": "VT"
     },
     {
-        "name": "Virgin Islands",
+        "value": "state",
+        "label": "Virgin Islands",
         "abbreviation": "VI"
     },
     {
-        "name": "Virginia",
+        "value": "state",
+        "label": "Virginia",
         "abbreviation": "VA"
     },
     {
-        "name": "Washington",
+        "value": "state",
+        "label": "Washington",
         "abbreviation": "WA"
     },
     {
-        "name": "West Virginia",
+        "value": "state",
+        "label": "West Virginia",
         "abbreviation": "WV"
     },
     {
-        "name": "Wisconsin",
+        "value": "state",
+        "label": "Wisconsin",
         "abbreviation": "WI"
     },
     {
-        "name": "Wyoming",
+        "value": "state",
+        "label": "Wyoming",
         "abbreviation": "WY"
     }
 ];
-
-export default states;
