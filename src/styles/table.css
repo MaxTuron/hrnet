@@ -1,13 +1,19 @@
 table {
   border-spacing: 0;
-  border: 1px solid black;
 }
 
-th, td {
+th{
+    margin: 0;
+    padding: 0 20px 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 2px #001524 solid;
+  }
+
+   td {
     margin: 0;
     padding: 0.5rem;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    font-weight: normal;
   }
 
 .userDisplay{
@@ -15,4 +21,34 @@ th, td {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.pagination, span{
+  color:#001524;
+}
+
+thead{
+ color: #001524;
+ text-transform: uppercase;
+}
+
+tbody{
+  color: black;
+}
+
+.showMore {
+  width: 10%;
+}
+
+.tableRowPair {
+  background-color: #f8e7d7;
+}
+
+.tableRowImpair {
+  background-color: white;
+}
+
+.cell{
+
+  padding:12px ;
 }

@@ -1,6 +1,6 @@
 .modalBackground {
 width: 100%;
-background: -webkit-linear-gradient( #4555b2, #42defa);
+background: -webkit-linear-gradient( #acadad, #acadad);
 position: fixed;
 display: flex;
 justify-content: center;
@@ -12,7 +12,7 @@ bottom: 0%;
 
 .modalContainer {
     border-radius: 12px;
-    background-color: white;
+    background-color: #BA5300;
     box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
@@ -26,4 +26,14 @@ bottom: 0%;
     align-items: center;
     font-size: 1.7rem;
     text-align: center;
+    color: #FFECD1;
 }
+
+button{
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+    background: -webkit-linear-gradient(left, #acadad, #acadad);
+    color: #FFECD1;
+  }

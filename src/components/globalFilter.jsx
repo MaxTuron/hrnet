@@ -1,6 +1,7 @@
 import {useAsyncDebounce} from "react-table"
 import {matchSorter} from 'match-sorter'
 import React from "react";
+import "../styles/table.css"
 // Define a default UI for filtering
 export default function GlobalFilter({
     preGlobalFilteredRows,

@@ -77,24 +77,14 @@ export default function Accueil() {
     <div className="userDisplay">
       <Header/>
       <h2>Current employee</h2>
-      <select
-          value={pageSize}
-          onChange={e => {
-            setPageSize(Number(e.target.value))
-          }}
-        >
+      <select className="showMore" value={pageSize} onChange={e => { setPageSize(Number(e.target.value))}}>
           {[10, 20, 30, 40, 50].map(pageSize => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize}
             </option>
           ))}
         </select>
-            <p
-              colSpan={visibleColumns.length}
-              style={{
-                textAlign: 'left',
-              }}
-            >
+            <p colSpan={visibleColumns.length} style={{ textAlign: 'left',}}>
               <GlobalFilter
                 preGlobalFilteredRows={preGlobalFilteredRows}
                 globalFilter={state.globalFilter}
@@ -128,10 +118,10 @@ export default function Accueil() {
             (row, i) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
+                <tr className={"tableRow" + (i%2 === 0 ? 'Pair' : 'Impair')} {...row.getRowProps()}>
                   {row.cells.map(cell => {
                     return (
-                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                      <td className="cell" {...cell.getCellProps()}>{cell.render('Cell')}</td>
                     )
                   })}
                 </tr>
@@ -165,6 +155,7 @@ export default function Accueil() {
         <span>
           | Go to page:{' '}
           <input
+            value={1}
             type="number"
             defaultValue={pageIndex + 1}
             onChange={e => {
