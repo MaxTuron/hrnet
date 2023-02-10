@@ -1,22 +1,14 @@
 import { Link } from "react-router-dom";
 import "../styles/header.css"
-export default function Header({title, children}) {
-    const url = window.location.href;
+export default function Header() {
     return (
     <nav className="main-nav">
         <div className="header">
             <h1>HRnet</h1>
-            {url === "http://localhost:3000/" ? 
             <div className="block">
-                <Link  to="employeelist">{title}</Link>
-                <h2>{children}</h2>
-            </div>
-             :
-            <div className="block">
-                <Link to="/">{title}</Link>
-                <h2>{children}</h2>
-            </div>
-            }
+                <Link className="link" to="/">Home</Link>
+                <Link className="link" to="employeelist">View employee list</Link>
+            </div>          
         </div>
     </nav>
     );

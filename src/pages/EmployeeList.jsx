@@ -74,8 +74,9 @@ export default function Accueil() {
   } = useTable ( { columns, data, initialState: { pageIndex: 0 }, },useFilters, useGlobalFilter, useSortBy, usePagination )
   
   return (
-    <div>
-      <Header title="Home">Current employee</Header>
+    <div className="userDisplay">
+      <Header/>
+      <h2>Current employee</h2>
       <select
           value={pageSize}
           onChange={e => {

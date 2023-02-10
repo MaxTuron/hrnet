@@ -13,8 +13,10 @@ export default function Accueil() {
     const [user, setUser] = useState({ userFirstName: "", userLastName: "", userDateOfBirth: "", userStartDate: "", userStreet: "", userCity: "",  userState: "", userZipCode: "", userDepartment: "" });
     
     const handleSubmit = async e => {
-        e.preventDefault();
-          if(user.userFirstName === undefined || user.userLastName === undefined || user.userDateOfBirth === undefined || user.userStartDate === undefined || user.userStreet === undefined || user.userCity === undefined || user.userState === undefined || user.userZipCode === undefined || user.userDepartment === undefined){
+      console.log(e)
+      console.log(user)
+      e.preventDefault();
+        if(user.userFirstName === "" || user.userLastName === "" || user.userDateOfBirth === "" || user.userStartDate === "" || user.userStreet === "" || user.userCity === "" || user.userState === "" || user.userZipCode === "" || user.userDepartment === ""){
           alert("Veuillez remplir tous les champs")
           console.log(user)
         }else{
@@ -24,9 +26,10 @@ export default function Accueil() {
       }
       
   return (
-    <div>
-      <Header title="View Current Employees">Create Employee</Header>
-      <div className="container">
+    <div className='userForm'>
+      <Header/>
+      <h2>Create employee</h2>
+      <div>
         <form onSubmit={handleSubmit} id="create-employee">
 
             <label htmlFor="first-name">First Name</label>
@@ -51,14 +54,14 @@ export default function Accueil() {
                 <input id="city" name='city' type="text" value={user.userCity} onChange={(e) => setUser(currValue => ({ ...currValue, userCity: e.target.value }))}/>
 
                 <label htmlFor="state">State</label>
-                <Select onChange={(e) => setUser(currValue => ({ ...currValue, userState: e.abbreviation }))} options={states} type="text" name='state' id="state" />
+                <Select getOptionValue={(option) => option.label} onChange={(e) => setUser(currValue => ({ ...currValue, userState: e.abbreviation }))} options={states} type="text" name='state' id="state" />
                 <label htmlFor="zip-code">Zip Code</label>
                 <input id="zipCode" name='zipCode' type="number" value={user.userZipCode} onChange={(e) => setUser(currValue => ({ ...currValue, userZipCode: e.target.value }))}/>
             </fieldset>
 
             <label htmlFor="department">Department</label>
-            <Select onChange={(e) => setUser(currValue => ({ ...currValue, userDepartment: e.label }))} options={departements} type="text" name='department' id="department" />
-            <button type="submit">Save</button>
+            <Select getOptionValue={(option) => option.label} onChange={(e) => setUser(currValue => ({ ...currValue, userDepartment: e.label }))} options={departements} type="text" name='department' id="department" />
+            <button className="field btn" type="submit">Save</button>
   
         </form>
         {openModal && <Modal closeModal={setOpenModal}>User succesfully created!</Modal>}
