@@ -53,10 +53,7 @@ h2{
   font-family: 'Poppins', sans-serif;
   font-weight: 200;
   font-size: 1.6vw;
-}
-
-.datePicker {
-  color: #acadad;
+  margin: 4px;
 }
 
 .paddingZip{

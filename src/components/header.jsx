@@ -7,7 +7,7 @@ export default function Header() {
             <h1>HRnet</h1>
             <div className="block">
                 <Link className="link" to="/">Home</Link>
-                <Link className="link" to="employeelist">View employee list</Link>
+                <Link className="link" to="/employeelist">View employee list</Link>
             </div>          
         </div>
     </nav>

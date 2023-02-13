@@ -114,19 +114,25 @@ export default function Accueil() {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {page.map(
+          {page.length >0 ? page.map(
             (row, i) => {
               prepareRow(row);
               return (
                 <tr className={"tableRow" + (i%2 === 0 ? 'Pair' : 'Impair')} {...row.getRowProps()}>
                   {row.cells.map(cell => {
+                    console.log(cell)
                     return (
                       <td className="cell" {...cell.getCellProps()}>{cell.render('Cell')}</td>
                     )
                   })}
                 </tr>
               )}
-          )}
+          ) : <tr className="errMessage">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>No matching records found</td></tr>}
         </tbody>
       </table>
       {/* 

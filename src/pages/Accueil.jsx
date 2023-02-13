@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Modal from "../components/modal"
+
+import Modal from "modalepackage"
 import Header from "../components/header"
 import {userArr } from "../store"
 import {states, departements} from "../utils/state"
@@ -39,10 +40,10 @@ export default function Accueil() {
             <input type="text" name='lastName' id="lastname" value={user.userLastName} onChange={(e) => setUser(currValue => ({ ...currValue, userLastName: e.target.value }))}/>
 
             <label htmlFor="date-of-birth">Date of Birth</label>
-            <input className='datePicker' type="date" name='dateOfBirth' id="dateOfBirth" value={user.userDateOfBirth} onChange={(e) => setUser(currValue => ({ ...currValue, userDateOfBirth: e.target.value }))}/>
+            <input type="date" name='dateOfBirth' id="dateOfBirth" value={user.userDateOfBirth} onChange={(e) => setUser(currValue => ({ ...currValue, userDateOfBirth: e.target.value }))}/>
 
             <label htmlFor="start-date">Start Date</label>
-            <input className='datePicker' type="date" name='startDate' id="startDate" value={user.userStartDate} onChange={(e) => setUser(currValue => ({ ...currValue, userStartDate: e.target.value }))}/>
+            <input type="date" name='startDate' id="startDate" value={user.userStartDate} onChange={(e) => setUser(currValue => ({ ...currValue, userStartDate: e.target.value }))}/>
 
             <fieldset className="address">
                 <legend>Address</legend>
@@ -56,7 +57,7 @@ export default function Accueil() {
                 <label htmlFor="state">State</label>
                 <Select getOptionValue={(option) => option.label} onChange={(e) => setUser(currValue => ({ ...currValue, userState: e.abbreviation }))} options={states} type="text" name='state' id="state" />
                 <label htmlFor="zip-code">Zip Code</label>
-                <input className='paddingZip' id="zipCode" name='zipCode' type="number" value={user.userZipCode} onChange={(e) => setUser(currValue => ({ ...currValue, userZipCode: e.target.value }))}/>
+                <input className='paddingZip' min="0" id="zipCode" name='zipCode' type="number" value={user.userZipCode} onChange={(e) => setUser(currValue => ({ ...currValue, userZipCode: e.target.value }))}/>
             </fieldset>
 
             <label htmlFor="department">Department</label>

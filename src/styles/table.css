@@ -27,6 +27,12 @@ th{
   color:#001524;
 }
 
+.pagination button{
+  background: -webkit-linear-gradient(left, #BA5300, #BA5300);
+  color: #FFECD1;
+}
+
+
 thead{
  color: #001524;
  text-transform: uppercase;
@@ -51,4 +57,8 @@ tbody{
 .cell{
 
   padding:12px ;
+}
+
+.errMessage{
+  text-align: center;
 }
