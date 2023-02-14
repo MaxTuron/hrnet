@@ -12,11 +12,11 @@ I have convert the modal component. The repository is Here
 
 **Old version of HRnet**
 
-<kbd>![HRnet old version](../src/assets/old.png)</kbd>
+<kbd>![HRnet old version](./old.png)</kbd>
 
 **New version of HRnet**
 
-<kbd>![HRnet old version](../src/assets/new.png)</kbd>
+<kbd>![HRnet old version](./new.png)</kbd>
 
 ## Prerequisites
 
