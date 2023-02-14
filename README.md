@@ -5,10 +5,7 @@ HRnet application allows to add new employee data and display current employees 
 
 The repository of the original project is [here](https://github.com/OpenClassrooms-Student-Center/P12_Front-end).
 
-Convert 4 plugin jquery in React component and publish one of them as a npm package in npm site.
-I chose to convert and publish the Select Menu. The repository of the component is [here](https://github.com/emilie-v11/P14_select-react-bootstrap), and the link to the package on the npm site here. [here](https://www.npmjs.com/package/select-react-bootstrap).
-
-I have convert the modal component. The repository is Here
+I have converted the modal component. The repository is Here
 
 **Old version of HRnet**
 
@@ -20,21 +17,19 @@ I have convert the modal component. The repository is Here
 
 ## Prerequisites
 
--   [npm](https://www.npmjs.com/) v7.24.0
+-   [npm](https://www.npmjs.com/) v9.2.0
 
 ## Dependencies
 
--   [React](https://reactjs.org/) v17.0.2
+-   [React](https://reactjs.org/) v18.2.0
 
 -   [Redux](https://redux.js.org/) v4.1.2
 
--   [react-redux](https://react-redux.js.org/) v7.2.6
+-   [react-redux](https://react-redux.js.org/) v8.0.5
 
--   [react-router-dom](https://reactrouter.com/web/guides/quick-start) v6.2.1
+-   [react-router-dom](https://reactrouter.com/web/guides/quick-start) v6.8.0
 
--   [prop-types](https://yarnpkg.com/package/prop-types) v15.8.1
-
--   [react-datepicker](https://yarnpkg.com/package/react-datepicker) v4.6.0
+-   [react-table](https://react-table-v7.tanstack.com/) v7.8.0
 
 
 ## Install this project on your local
