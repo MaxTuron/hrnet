@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
-import Modal from "modalepackage"
+import {Modal} from "modaleplugin"
 import Header from "../components/header"
 import {userArr } from "../store"
 import {states, departements} from "../utils/state"

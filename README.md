@@ -5,7 +5,7 @@ HRnet application allows to add new employee data and display current employees 
 
 The repository of the original project is [here](https://github.com/OpenClassrooms-Student-Center/P12_Front-end).
 
-I have converted the modal component. The repository is Here
+I have converted the modal component. The repository is [here](https://github.com/MaxTuron/modaleplugin)
 
 **Old version of HRnet**
 
@@ -23,13 +23,19 @@ I have converted the modal component. The repository is Here
 
 -   [React](https://reactjs.org/) v18.2.0
 
--   [Redux](https://redux.js.org/) v4.1.2
+-   [Redux](https://redux.js.org/) v4.2.1
 
 -   [react-redux](https://react-redux.js.org/) v8.0.5
 
 -   [react-router-dom](https://reactrouter.com/web/guides/quick-start) v6.8.0
 
+-   [react-select](https://react-select.com/home) v5.7.0
+
 -   [react-table](https://react-table-v7.tanstack.com/) v7.8.0
+
+-   [match-sorter](https://www.npmjs.com/package/match-sorter) v6.3.1
+
+-   [modaleplugin](https://www.npmjs.com/package/modaleplugin) v0.1.2
 
 
 ## Install this project on your local
