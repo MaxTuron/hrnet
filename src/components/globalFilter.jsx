@@ -16,8 +16,10 @@ export default function GlobalFilter({
   
     return (
       <span>
-        Search:{' '}
+        
+        <label htmlFor="Search">Search</label>
         <input
+        id="search"
           value={value || ""}
           onChange={e => {
             setValue(e.target.value);

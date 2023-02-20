@@ -159,9 +159,9 @@ export default function Accueil() {
           </strong>{' '}
         </span>
         <span>
-          | Go to page:{' '}
+          <label htmlFor="page">Go to page:</label>
           <input
-            value={1}
+          id="page"            
             type="number"
             defaultValue={pageIndex + 1}
             onChange={e => {
